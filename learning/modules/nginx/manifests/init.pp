@@ -6,7 +6,7 @@ class nginx {
     	require => Class['apt'],
   	}
 
-  	service { 'nginx service':
+  	service { 'nginx':
   		ensure => running,
   		enable => true,
   		require => Package['nginx'],
@@ -20,7 +20,7 @@ class nginx {
 	file { 'sites-available config':
 	    path => "/etc/nginx/sites-available/${domain_name}",
 	    ensure => file,
-	    content => template("${inc_file_path}/nginx/nginx.conf.erb"),
+	    content => template('nginx/nginx.conf.erb'),
 	    require => Package['nginx']
 	}
   

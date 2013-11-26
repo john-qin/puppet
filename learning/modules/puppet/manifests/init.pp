@@ -1,17 +1,20 @@
 class puppet {
 	
-	exec { 'wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb':
+	exec { 'puppet source get':
 	  	command => 'wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb',
-	    timeout => 0,
+	  	tries => '3',
 	}
 
-	exec { 'dpkg -i puppetlabs-release-precise.deb':
+	exec { 'puppet source install':
 	  	command => 'dpkg -i puppetlabs-release-precise.deb',
-	    timeout => 0,
+	  	require => Exec['puppet source get'],
 	}
 
-	package { 'puppet':
+	package { 'puppet software':
 		ensure => latest,
-		require => Class['apt'],
+		require => [ 
+					Class['apt'], 
+					Exec['puppet source install']
+				   ],
 	}
 }

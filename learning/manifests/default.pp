@@ -2,13 +2,13 @@ Exec { path => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin' }
 
 # Global variables
 
-$inc_file_path = 'puppet/learning/manifests/files'
+$inc_file_path = '/vagrant/puppet/learning/files'
 $domain_name = 'discoverious.com'
 $user = 'vagrant'
 $project = 'discoverious'
 
-$nginx_version = '1.1.19-1ubuntu0.4'
+$nginx_version = '1.1.19-1ubuntu0.5'
 
-include puppet
+include apt
 include bootstrap
-#include nginx
+include nginx
