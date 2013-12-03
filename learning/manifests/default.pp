@@ -8,7 +8,9 @@ $user = 'vagrant'
 $project = 'discoverious'
 
 $nginx_version = '1.1.19-1ubuntu0.5'
+$postgresql_version = '9.3.1'
 
-include apt
+include aptupdate
 include bootstrap
-include nginx
+#include nginx
+

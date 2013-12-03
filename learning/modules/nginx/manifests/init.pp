@@ -3,7 +3,7 @@ class nginx {
 
 	package { 'nginx':
     	ensure => "${nginx_version}",
-    	require => Class['apt'],
+    	require => Class['aptupdate'],
   	}
 
   	service { 'nginx':
