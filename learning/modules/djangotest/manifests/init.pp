@@ -2,7 +2,7 @@ class djangotest{
 
 	exec { 'Create Django Folder':
 		command => 'mkdir /home/vagrant/django',
-		require => Package[$packages],
+		#require => Package[$packages],
 		user => 'vagrant',
 	}
 
