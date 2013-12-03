@@ -1,17 +1,5 @@
-class bootstrap{
-	
-	$packages = [
-		"curl",
-		"git",
-		"vim",
-	]
+class djangotest{
 
-	package { $packages:
-		ensure => latest,
-		require => Class['aptupdate'],
-	}
-
-	
 	exec { 'Create Django Folder':
 		command => 'mkdir /home/vagrant/django',
 		require => Package[$packages],
@@ -39,5 +27,14 @@ class bootstrap{
 		user => 'vagrant',
 	}
 
+
+	file { '/usr/local/bin/papply':
+		content => template('djangotest/papply.erb'),
+		user => 'root',
+	}
+
+	exec { 'chmod a+x /usr/local/bin/papply':
+		user => 'root',
+	}
 
 }
