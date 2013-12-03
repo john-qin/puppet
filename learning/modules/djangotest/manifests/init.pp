@@ -30,7 +30,6 @@ class djangotest{
 
 	file { '/usr/local/bin/papply':
 		content => template('djangotest/papply.erb'),
-		user => 'root',
 	}
 
 	exec { 'chmod a+x /usr/local/bin/papply':
