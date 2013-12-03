@@ -12,6 +12,6 @@ $postgresql_version = '9.3.1'
 
 include aptupdate
 include bootstrap
-#include nginx
+include nginx
 include djangotest
 
