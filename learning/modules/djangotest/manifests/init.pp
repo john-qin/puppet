@@ -22,7 +22,6 @@ class djangotest{
 
 	exec { 'git pull':
 		command => 'git pull origin master',
-		#require => Exec['git add url'],
 		cwd => '/home/vagrant/django',
 		user => 'vagrant',
 	}
