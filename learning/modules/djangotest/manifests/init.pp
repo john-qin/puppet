@@ -1,14 +1,14 @@
 class djangotest{
 
-	exec { 'Create Django Folder':
-		command => 'mkdir /home/vagrant/django',
-		#require => Package[$packages],
-		user => 'vagrant',
+	file { '/home/vagrant/django':
+		ensure => "directory",
+		owner  => 'root',
 	}
+
 
 	exec { 'git init':
 		command => 'git init',
-		require => Exec['Create Django Folder'],
+		require => File['/home/vagrant/django'],
 		cwd => '/home/vagrant/django',
 		user => 'vagrant',
 	}
