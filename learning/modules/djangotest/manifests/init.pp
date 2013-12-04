@@ -18,7 +18,7 @@ class djangotest{
 		require => Exec['git init'],
 		cwd => '/home/vagrant/django',
 		user => 'vagrant',
-		creates => "/usr/local/bin/papply"
+		onlyif => 'test ! -f /usr/local/bin/papply',
 	}
 
 
