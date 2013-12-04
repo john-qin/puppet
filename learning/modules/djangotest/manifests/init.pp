@@ -2,7 +2,7 @@ class djangotest{
 
 	file { '/home/vagrant/django':
 		ensure => "directory",
-		owner  => 'root',
+		owner  => 'vagrant',
 	}
 
 
@@ -20,15 +20,15 @@ class djangotest{
 		user => 'vagrant',
 	}
 
-	exec { 'git pull':
-		command => 'git pull origin master',
-		cwd => '/home/vagrant/django',
-		user => 'vagrant',
-	}
+	# exec { 'git pull':
+	#	command => 'git pull origin master',
+	#	cwd => '/home/vagrant/django',
+	#	user => 'vagrant',
+	# }
 
 
 	file { '/usr/local/bin/papply':
-		content => template('djangotest/papply.erb'),
+		content => "#!/bin/sh\nsudo puppet apply /home/vagrant/django/learning/manifests/default.pp --modulepath=/home/vagrant/django/learning/modules/ $*",
 	}
 
 	exec { 'chmod a+x /usr/local/bin/papply':
