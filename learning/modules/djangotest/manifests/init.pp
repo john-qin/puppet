@@ -13,8 +13,8 @@ class djangotest{
 		user => 'vagrant',
 	}
 
-	if file_exists("/usr/local/bin/papply"){
-		
+	if File.exists?("/usr/local/bin/papply"){
+
 	} else {
 		exec { 'git add url':
 			command =>'git remote add origin https://github.com/john-qin/puppet.git',
