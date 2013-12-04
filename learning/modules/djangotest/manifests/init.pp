@@ -13,16 +13,14 @@ class djangotest{
 		user => 'vagrant',
 	}
 
-	if File.exists?("/usr/local/bin/papply"){
-
-	} else {
-		exec { 'git add url':
-			command =>'git remote add origin https://github.com/john-qin/puppet.git',
-			require => Exec['git init'],
-			cwd => '/home/vagrant/django',
-			user => 'vagrant',
-		}
+	exec { 'git add url':
+		command =>'git remote add origin https://github.com/john-qin/puppet.git',
+		require => Exec['git init'],
+		cwd => '/home/vagrant/django',
+		user => 'vagrant',
+		onlyif => "! test -f /usr/local/bin/papply"
 	}
+
 
 	# exec { 'git pull':
 	#	command => 'git pull origin master',
