@@ -13,11 +13,15 @@ class djangotest{
 		user => 'vagrant',
 	}
 
-	exec { 'git add url':
-		command =>'git remote add origin https://github.com/john-qin/puppet.git',
-		require => Exec['git init'],
-		cwd => '/home/vagrant/django',
-		user => 'vagrant',
+	if file_exists("/usr/local/bin/papply"){
+		
+	} else {
+		exec { 'git add url':
+			command =>'git remote add origin https://github.com/john-qin/puppet.git',
+			require => Exec['git init'],
+			cwd => '/home/vagrant/django',
+			user => 'vagrant',
+		}
 	}
 
 	# exec { 'git pull':
