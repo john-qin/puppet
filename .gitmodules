@@ -1,0 +1,3 @@
+[submodule "learning/modules/postgresql"]
+	path = learning/modules/postgresql
+	url = https://github.com/akumria/puppet-postgresql.git

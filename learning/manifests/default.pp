@@ -13,5 +13,21 @@ $postgresql_version = '9.3.1'
 include aptupdate
 include bootstrap
 include nginx
+
+class { 'postgresql':
+  version => '9.1',
+}
+
+class { 'postgresql::server': 
+  version => '9.1',
+}
+
+postgresql::db { 'discoverious':
+  owner => 'feelexit',
+  password => 'welcome123',
+  
+}
+
+
 include djangotest
 
