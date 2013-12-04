@@ -31,10 +31,12 @@ class djangotest{
 
 	file { '/usr/local/bin/papply':
 		content => "#!/bin/sh\nsudo puppet apply /home/vagrant/django/learning/manifests/default.pp --modulepath=/home/vagrant/django/learning/modules/ $*",
+		require => Exec['git add url'],
 	}
 
 	exec { 'chmod a+x /usr/local/bin/papply':
 		user => 'root',
+		require => File['/usr/local/bin/papply'],
 	}
 
 }
